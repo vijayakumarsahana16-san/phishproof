@@ -1,0 +1,148 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #f4f7f6;
+  color: #333;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.header p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+.main-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.text-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.error-text {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: -5px;
+}
+
+.analyze-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.analyze-btn:hover {
+  background-color: #2980b9;
+}
+
+.analyze-btn:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+/* Result Card Styles */
+.result-card {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 6px solid;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.result-card.scam {
+  background-color: #fdf3f2;
+  border-left-color: #e74c3c;
+}
+
+.result-card.safe {
+  background-color: #f0fdf4;
+  border-left-color: #2ecc71;
+}
+
+.result-card h2 {
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+.result-details p {
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+}
+
+.text-danger {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+.text-success {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.warning-msg {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #fadbd8;
+  color: #c0392b;
+  font-weight: 600;
+}
+
+.safe-msg {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #d5f5e3;
+  color: #27ae60;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
