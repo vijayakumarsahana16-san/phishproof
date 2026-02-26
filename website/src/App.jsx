@@ -40,7 +40,7 @@ function App() {
 
     try {
       // 3. Make the API Call to FastAPI (running on port 8000)
-      const response = await fetch('http://localhost:8000/analyze', {
+      const response = await fetch('https://phishproof.onrender.com/analyze', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
