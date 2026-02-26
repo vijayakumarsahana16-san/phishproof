@@ -70,7 +70,7 @@ function App() {
   return (
     <div className="app-container">
       <header className="header">
-        <h1>Scam Text Analyzer</h1>
+        <h1>Phishproof - Scam Detection Tool</h1>
         <p>Paste an email, SMS, or message below to check if it's safe.</p>
       </header>
 
