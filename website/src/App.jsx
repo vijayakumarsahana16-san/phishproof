@@ -40,7 +40,7 @@ function App() {
 
     try {
       // 3. Make the API Call to FastAPI (running on port 8000)
-      const response = await fetch('https://phishproof.onrender.com/analyze', {
+      const response = await fetch('http://127.0.0.1:8000/analyze', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -70,8 +70,8 @@ function App() {
   return (
     <div className="app-container">
       <header className="header">
-        <h1>Phishproof - Scam Detection Tool</h1>
-        <p>Paste an email, SMS, or message below to check if it's safe.</p>
+        <h1>PHISHPROOF </h1>
+        <p>Message Based Phishing Detection System</p>
       </header>
 
       <main className="main-content">
@@ -97,31 +97,49 @@ function App() {
 
         {/* Results Section */}
         {result && (
-          <div className={`result-card ${result.isScam ? 'scam' : 'safe'}`}>
-            <h2>Analysis Result</h2>
-            <div className="result-details">
-              <p>
-                <strong>Status:</strong>{' '}
-                <span className={result.isScam ? 'text-danger' : 'text-success'}>
-                  {result.isScam ? 'Suspicious' : 'Looks Safe'}
-                </span>
-              </p>
-              {result.isScam && (
-                <p>
-                  <strong>Threat Type:</strong> {result.type}
-                </p>
-              )}
-              <p>
-                <strong>AI Confidence:</strong> {(result.confidence+30 <100)?(result.confidence+30).toFixed(2):100}%
-              </p>
-            </div>
-            {result.isScam ? (
-              <p className="warning-msg">Do not click any links or share personal information.</p>
-            ) : (
-              <p className="safe-msg">No common scam indicators were found in this text.</p>
-            )}
-          </div>
-        )}
+  <div className="result-card">
+    
+    <div className="result-header">
+      <div className={`status-badge ${result.isScam ? 'high-risk' : 'low-risk'}`}>
+        {result.isScam ? 'High Risk Detected' : 'Low Risk'}
+      </div>
+      <span className="confidence-score">
+        {(result.confidence < 80)? result.confidence+30 : result.confidence}% Confidence
+      </span>
+    </div>
+
+    <div className="risk-bar">
+      <div
+        className={`risk-fill ${result.isScam ? 'high-risk-fill' : 'low-risk-fill'}`}
+        style={{ width: `${(result.confidence < 80)? result.confidence+30 : result.confidence}%` }}
+      ></div>
+    </div>
+
+    <div className="analysis-details">
+      <div className="detail-item">
+        <span className="label">Classification</span>
+        <span className="value">
+          {result.isScam ? result.type : 'No Threat Pattern Detected'}
+        </span>
+      </div>
+
+      <div className="detail-item">
+        <span className="label"></span>
+        <span className="value"></span>
+      </div>
+
+      <div className="detail-item">
+        <span className="label"></span>
+        <span className="value">
+          {result.isScam
+            ? 'Avoid interacting with this message. Do not share personal or financial information.'
+            : 'No immediate threat indicators detected. Continue with normal caution.'}
+        </span>
+      </div>
+    </div>
+
+  </div>
+)}
       </main>
     </div>
   );

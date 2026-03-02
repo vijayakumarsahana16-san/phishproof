@@ -7,7 +7,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://phishproof.netlify.app"],
+    allow_origins=["https://phishproof.netlify.app", "http://localhost:5173"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
